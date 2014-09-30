@@ -1,0 +1,8 @@
+- name: Trying to reach hosts
+  action: ping
+- name: Running a system update
+  apt: update_cache=yes
+- name: Installing Git
+  apt: pkg=git state=installed
+- name: Installing Vim
+  apt: pkg=vim state=installed

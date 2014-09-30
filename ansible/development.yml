@@ -1,0 +1,11 @@
+---
+- hosts: development
+  sudo: true
+  user: vagrant
+
+  roles:
+  - sys
+  - mysql
+  - nginx
+  - php5-fpm
+  - wordpress

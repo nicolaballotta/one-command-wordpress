@@ -1,0 +1,18 @@
+---
+- name: Install Nginx
+  apt: pkg=nginx state=installed
+
+- name: Configure Nginx
+  template: src=roles/nginx/templates/nginx/nginx.conf.j2 dest=/etc/nginx/nginx.conf owner=vagrant group=vagrant
+  notify: restart nginx
+
+- name: Create vhost for WordPress
+  template: src=roles/nginx/templates/nginx/wordpress.dev.j2 dest=/etc/nginx/sites-available/wordpress.dev owner=vagrant group=vagrant
+  notify: restart nginx
+
+- name: Activate WordPress vhost
+  shell: ln -s /etc/nginx/sites-available/wordpress.dev /etc/nginx/sites-enabled/wordpress.dev
+  notify: restart nginx
+
+- name: Start Nginx
+  service: name=nginx state=started enabled=true
