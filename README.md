@@ -32,11 +32,14 @@ PLEASE DON'T USE THIS SOFTWARE ON A PRODUCTION ENVIRONMENT, IT'S A SERIOUS SECUR
     git clone https://github.com/nballotta/one-command-wordpress.git
     cd one-command-wordpress
     ```
+
 3. Configure ansible variables in `ansible/group_vars/all` and launch Vagrant
     
     ```
     vagrant up
     ```
+
+4. You will find your WordPress installation under `wordpress.dev/`.
 
 ### Synced folders
 

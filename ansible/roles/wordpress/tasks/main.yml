@@ -3,8 +3,7 @@
   get_url: url=http://wordpress.org/wordpress-{{ wp_version }}.tar.gz dest=/var/www/wordpress.dev/wordpress-{{ wp_version }}.tar.gz
 
 - name: Extracting WordPress
-  unarchive: src=/var/www/wordpress.dev/wordpress-{{ wp_version }}.tar.gz dest=/var/www/wordpress.dev/ copy=no
-  #command: chdir=/var/www/wordpress.dev/ /bin/tar xfz --owner vagrant --group vagrant --no-same-owner wordpress-{{ wp_version }}.tar.gz creates=/var/www/wordpress.dev/wordpress
+  shell: cd /var/www/wordpress.dev/; /bin/tar xfz wordpress-{{ wp_version }}.tar.gz --owner vagrant --group vagrant --no-same-owner
 
 - name: Move WordPress files to root directory
   shell: mv /var/www/wordpress.dev/wordpress/* /var/www/wordpress.dev/
